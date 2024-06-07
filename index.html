@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="number"]::placeholder {
+            color: #aaa;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        
+        center {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Temperature Converter</h1>
+        <form>
+            <label for="cel">Enter temperature in Celsius:</label>
+            <input type="number" step="any" placeholder="Enter temperature in Celsius" id="cel" /><br>
+            <label for="far">Enter temperature in Fahrenheit:</label>
+            <input type="number" step="any" placeholder="Enter temperature in Fahrenheit" id="far" />
+        </form>
+    </center>
+    <script>
+        const cel = document.getElementById("cel");
+        const far = document.getElementById("far");
+
+        cel.addEventListener("input", function() {
+            const c = parseFloat(cel.value);
+            const f = (c * 9 / 5) + 32;
+            far.value = f.toFixed(2);
+        });
+
+        far.addEventListener("input", function() {
+            const f = parseFloat(far.value);
+            const c = (f - 32) * 5 / 9;
+            cel.value = c.toFixed(2);
+        });
+    </script>
+</body>
+
+</html>
